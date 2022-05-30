@@ -1,0 +1,29 @@
+h1{
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 30px;
+  color: #03045E;
+}
+table {
+  width: 95%; margin-right: auto; margin-left: auto;
+}
+
+th{
+  margin-left: auto;
+}
+
+td{
+  margin-left: auto;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.mat-row:hover {
+  background-color: lightgrey;
+}
+
+.mat-icon:hover {
+   color: #03045E;
+}

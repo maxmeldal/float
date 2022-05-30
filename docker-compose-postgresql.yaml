@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  database:
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_DB: float
+      POSTGRES_USER: float
+      POSTGRES_PASSWORD: float
+    ports:
+      - "5432:5432"

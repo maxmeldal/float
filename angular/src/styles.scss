@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@import 'sanitize.css';
+@import './theme';
+@include mat.core(
+    mat.define-typography-config(
+      $font-family: 'Arial'
+    )
+);
+@include mat.all-component-themes($float-theme);
+
+html, body { height: 100%; }
+body { margin: 0 }
+

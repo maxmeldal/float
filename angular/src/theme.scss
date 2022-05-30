@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+$float-primary: mat.define-palette(mat.$indigo-palette);
+$float-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$float-warn: mat.define-palette(mat.$red-palette);
+
+$float-theme: mat.define-light-theme((
+  color: (
+    primary: $float-primary,
+    accent: $float-accent,
+    warn: $float-warn,
+  )
+));

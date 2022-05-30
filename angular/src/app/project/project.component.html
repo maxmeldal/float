@@ -1,0 +1,50 @@
+<div style="margin: 0; height: 100%; overflow: hidden; width: 100%;">
+<div style="position: fixed; top: 0px; left: 0px; padding: 15px; cursor: pointer;"><img src="../assets/logo/logo_blue.png" alt="float logo" width="auto" height="30px" routerLink="/projects"></div>
+  <div style="position: fixed;
+  left: 50%; width: 500px; margin-left: -250px;
+top: 0; padding: 15px; text-align: center;"><h1>{{(project | async)?.name | titlecase}}</h1></div>
+<div style="position: fixed; top: 0px; right: 0px; padding: 15px;">
+    <ng-container *ngIf="project | async as project">
+      <button mat-icon-button [matMenuTriggerFor]="menu" style="color: #03045E;">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openViewStatisticDialog()">
+          <mat-icon>visibility</mat-icon>
+          <span>View Statistic</span>
+        </button>
+        <button mat-menu-item (click)="openEditProjectDialog()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit Project </span>
+        </button>
+        <ng-container *ngIf="user | async as user">
+        <ng-container *ngIf="user.sounds">
+          <button mat-menu-item (click)="toggleSound(user)">
+          <mat-icon>volume_off</mat-icon>
+          <span>Disable sounds</span>
+        </button>
+        </ng-container>
+          <ng-container *ngIf="!user.sounds">
+            <button mat-menu-item (click)="toggleSound(user)">
+              <mat-icon>volume_up</mat-icon>
+              <span>Enable sounds</span>
+            </button>
+        </ng-container>
+        </ng-container>
+      </mat-menu>
+    </ng-container>
+</div>
+<div style="display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 8vh;">
+<div style="margin-top: 0px; margin-left: auto; margin-right: auto;" cdkDropListGroup>
+  <div fxLayout="row" style="text-align: center; margin-top: 0; margin-left: auto; margin-right: auto;">
+      <div *ngFor="let bucket of buckets | async" style="float: left; margin-right: 15px; margin-left: 15px;">
+      <h2 style="margin-right: auto; margin-left: auto">{{bucket.name | titlecase}}</h2>
+      <float-bucket [bucketId]="bucket.id" [bucketName]="bucket.name"></float-bucket>
+      </div>
+  </div>
+</div>
+</div>
+</div>

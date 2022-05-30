@@ -1,0 +1,22 @@
+<ng-container *ngIf="(tasks | async) as tasks">
+  <div
+    cdkDropList
+    [cdkDropListData]="tasks"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let task of tasks" cdkDrag (click)="taskClicked(task)">
+        <ng-container *ngIf="task.color">
+          <mat-icon [style]="{ color: task.color }" style="width: 5px;">circle</mat-icon>
+        </ng-container>
+      <span style="text-align: left; margin-left: 23px">{{task.name}}</span>
+      <mat-icon *ngIf="task.description" matTooltip="{{task.description}}" class="description-icon">description</mat-icon>
+    </div>
+  </div>
+</ng-container>
+<form (submit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Add task</mat-label>
+    <input matInput [formControl]="name">
+  </mat-form-field>
+  <button mat-raised-button>Add task</button>
+</form>

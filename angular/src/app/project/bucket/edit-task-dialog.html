@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Task name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="width: 20%">
+    <mat-select placeholder="Label:" [(ngModel)]="data.color">
+      <mat-select-trigger>
+        <mat-icon [style]="{color: data.color}">circle</mat-icon>&nbsp;
+      </mat-select-trigger>
+      <mat-option value="green">
+        <mat-icon style="color: green">circle</mat-icon>
+      </mat-option>
+      <mat-option value="blue">
+        <mat-icon style="color: blue">circle</mat-icon>
+      </mat-option>
+      <mat-option value="red">
+        <mat-icon style="color: red">circle</mat-icon>
+      </mat-option>
+      <mat-option value="yellow">
+        <mat-icon style="color: yellow">circle</mat-icon>
+      </mat-option>
+      <mat-option value="pink">
+        <mat-icon style="color: pink">circle</mat-icon>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="height: 20vw; width: 25vw; max-width: 25vw;">
+    <mat-label>Task description</mat-label>
+    <textarea matInput [(ngModel)]="data.description" placeholder="Short description for your task" style="height: 20vw; width: 25vw; max-width: 25vw;"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+  <button mat-button (click)="onDeleteClick(data.id)" color="warn">Delete</button>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <!-- This changelog primarily handles projects setup -->
+
+    <changeSet id="1.0.0:float:projects_table" author="MTM">
+        <createTable tableName="projects">
+            <column name="id" type="text">
+                <constraints unique="true" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="created_at" type="timestamptz"/>
+            <column name="deadline" type="timestamptz"/>
+            <column name="hour_estimate" type="number"/>
+            <column name="price" type="double"/>
+            <column name="user_id" type="text">
+                <constraints nullable="false" foreignKeyName="fk_user_id" references="users(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

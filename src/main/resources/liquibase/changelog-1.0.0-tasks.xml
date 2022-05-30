@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <!-- This changelog primarily handles projects setup -->
+
+    <changeSet id="1.0.0:float:tasks_table" author="YBC">
+        <createTable tableName="tasks">
+            <column name="id" type="text">
+                <constraints unique="true" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="color" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="bucket_id" type="text">
+                <constraints nullable="false" foreignKeyName="fk_bucket_id" references="buckets(id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

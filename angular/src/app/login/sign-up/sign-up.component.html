@@ -1,0 +1,27 @@
+<body>
+
+<img class="center" src="assets/logo/logo_blue.png">
+<form (ngSubmit)="submit()">
+
+  <div class="sign-up-box">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput [formControl]="username">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [formControl]="password">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <button class="create-user-button" mat-raised-button type="submit">Create user</button>
+    <button class="cancel-button" mat-raised-button type="cancel" routerLink="/login">Cancel</button>
+  </p>
+  </div>
+</form>
+</body>

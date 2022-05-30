@@ -1,0 +1,71 @@
+<div id="content" #content>
+<div class="grid-container">
+  <div class="grid-child purple">
+    <p>User Name</p>
+    <h2>{{(user | async)?.username}}</h2>
+  </div>
+
+  <div class="grid-child purple">
+    <p>Project Name</p>
+    <h2>{{(project | async)?.name}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Description</p>
+    <h2>{{(project | async)?.description}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Creation Date</p>
+    <h2>{{(project | async)?.createdAt|date}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Deadline</p>
+    <h2>{{(project | async)?.deadline|date}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Estimated Hours</p>
+    <h2>{{(project | async)?.hourEstimate}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Price</p>
+    <h2>{{(project | async)?.price}}</h2>
+  </div>
+
+  <div class="grid-child green">
+    <p>Hourly Rate</p>
+    <ng-container *ngIf="(project | async)?.price as price">
+      <ng-container *ngIf="(project | async)?.hourEstimate as hourEstimate">
+        <h2>{{price/hourEstimate}}</h2>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <ng-container *ngFor="let bucket of buckets | async">
+    <mat-card style="max-height: 25vh; overflow-y: scroll">
+      <mat-card-title>{{bucket.name | titlecase}}</mat-card-title>
+      <float-bucket-tasks [bucketId]="bucket.id"></float-bucket-tasks>
+    </mat-card>
+  </ng-container>
+
+
+</div>
+
+
+
+<div class="progress-bar">
+  <h1 style="margin-top: 20px">Project Progress</h1>
+  <h3>{{done}} / {{total}} Tasks Done</h3>
+  <mat-progress-bar mode="determinate" value="{{percentage}}"></mat-progress-bar>
+  <h4>{{percentage}}%</h4>
+  <h5></h5>
+</div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-raised-button (click)="exportHtmlToPDF()">Export to PDF</button>
+  </mat-dialog-actions>
+
+</div>

@@ -1,0 +1,46 @@
+<form (ngSubmit)="submit()">
+  <h2>Edit project</h2>
+  <mat-dialog-content>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Project name</mat-label>
+      <input matInput [formControl]="name">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [formControl]="description" #text maxlength="255" value="{{(project | async)?.description}}"></textarea>
+      <mat-hint align="end">{{text.value.length}} / 255</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Deadline</mat-label>
+      <input matInput [formControl]="deadline" [matDatepicker]="dp3" value="{{(project | async)?.createdAt}}">
+      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Hour Est.</mat-label>
+      <input matInput [formControl]="hourEstimate" value="{{(project | async)?.hourEstimate}}" type="number">
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput [formControl]="price" value="{{(project | async)?.price}}" type="number">
+    </mat-form-field>
+  </p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-button cdkFocusInitial type="submit">Save</button>
+  </mat-dialog-actions>
+</form>
