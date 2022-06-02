@@ -10,10 +10,10 @@ export class ApplicationStateService extends ObservableStore<ApplicationStateDat
   constructor() {
     super({
         // Development API URL
-        //apiUrl: "http://localhost:8080/api",
+        apiUrl: "http://localhost:8080/api",
 
         // Production API URL
-        apiUrl: "https://floatapp.azurewebsites.net/api",
+        //apiUrl: "https://floatapp.azurewebsites.net/api",
 
         user: undefined,
 
